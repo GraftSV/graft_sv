@@ -1,427 +1,175 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Виктор Суворов | Аналитик со смыслом</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
-        
-        body { font-family: 'Inter', system_ui, sans-serif; }
-        .title-font { font-family: 'Space Grotesk', sans-serif; }
-        .hero-bg { background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%); }
-        
-        .nav-link { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .nav-link:hover { color: #0ea5e9; transform: translateY(-2px); }
-        .portfolio-card { transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .portfolio-card:hover { transform: scale(1.05) translateY(-10px); box-shadow: 0 25px 50px -12px rgb(14 165 233 / 0.25); }
-        .modal { animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        @keyframes modalPop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        details summary { cursor: pointer; }
-        details summary::-webkit-details-marker { display: none; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Виктор Суворов | Аналитик со смыслом</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap');
+
+body { font-family: 'Inter', sans-serif; }
+.title-font { font-family: 'Space Grotesk', sans-serif; }
+.hero-bg { background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%); }
+
+.nav-link { transition: all 0.3s; }
+.nav-link:hover { color:#0ea5e9; }
+
+.portfolio-card { transition: all 0.3s; }
+.portfolio-card:hover { transform: translateY(-6px); }
+
+</style>
 </head>
+
 <body class="bg-zinc-50 text-zinc-800">
 
-    <!-- NAVBAR с мобильным меню -->
-    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <div class="flex items-center gap-x-3">
-                <div class="w-10 h-10 bg-sky-500 rounded-2xl flex items-center justify-center text-white text-2xl font-bold title-font shadow-inner">VS</div>
-                <span class="title-font text-2xl font-semibold tracking-tight">Виктор Суворов</span>
-            </div>
-            
-            <!-- Десктоп меню -->
-            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
-                <a href="#about" class="nav-link">Обо мне</a>
-                <a href="#experience" class="nav-link">Опыт</a>
-                <a href="#skills" class="nav-link">Навыки</a>
-                <a href="#portfolio" class="nav-link">Портфолио</a>
-                <a href="#hobbies" class="nav-link">Увлечения</a>
-                <a href="#contact" class="nav-link">Контакты</a>
-            </div>
-            
-            <!-- Мобильная часть -->
-            <div class="flex items-center gap-x-4">
-                <a href="https://t.me/V_Grafts" target="_blank" 
-                   class="flex items-center gap-x-2 bg-sky-600 text-white px-5 py-2.5 rounded-3xl text-sm font-semibold hover:bg-sky-700 transition-all">
-                    <i class="fab fa-telegram-plane"></i> Telegram
-                </a>
-                <button id="mobile-menu-btn" class="md:hidden text-3xl text-zinc-700">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Выпадающее мобильное меню -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 py-6">
-            <div class="flex flex-col gap-y-5 text-base font-medium">
-                <a href="#about" class="nav-link py-2">Обо мне</a>
-                <a href="#experience" class="nav-link py-2">Опыт</a>
-                <a href="#skills" class="nav-link py-2">Навыки</a>
-                <a href="#portfolio" class="nav-link py-2">Портфолио</a>
-                <a href="#hobbies" class="nav-link py-2">Увлечения</a>
-                <a href="#contact" class="nav-link py-2">Контакты</a>
-            </div>
-        </div>
-    </nav>
+<!-- NAV -->
+<nav class="bg-white border-b sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
 
-    <!-- HERO (адаптивный) -->
-    <header class="hero-bg py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="inline-flex items-center gap-x-2 bg-white px-5 py-2 rounded-3xl shadow-sm text-sm font-medium mb-6">
-                        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                        Доступен для новых проектов • 2026
-                    </div>
-                    
-                    <h1 class="title-font text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-4">
-                        Виктор<br>Суворов
-                    </h1>
-                    <p class="text-2xl md:text-3xl text-zinc-600 mb-8">Аналитик со смыслом</p>
-                    
-                    <div class="max-w-md text-base md:text-lg text-zinc-600 mb-10">
-                        Технический руководитель • 25+ лет опыта<br>
-                        Патент №129228 • Инженерия • Автоматизация • Сервис • Производство
-                    </div>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#portfolio" class="inline-flex items-center justify-center gap-x-3 bg-sky-600 text-white px-8 py-4 rounded-3xl font-semibold text-lg hover:bg-sky-700 transition-all shadow-lg">
-                            Посмотреть портфолио <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="https://t.me/V_Grafts" target="_blank" class="inline-flex items-center justify-center gap-x-3 border-2 border-zinc-800 px-8 py-4 rounded-3xl font-semibold text-lg hover:bg-zinc-900 hover:text-white transition-all">
-                            Написать в Telegram
-                        </a>
-                    </div>
-                </div>
-                
-			<div class="relative">
-				<div class="rounded-3xl shadow-2xl overflow-hidden">
-					<img src="VB.JPG" alt="Виктор Суворов" 
-						 class="w-8/12 h-auto object-cover mx-auto">
-					<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8 text-white">
-						<div class="flex items-center gap-x-3">
-							<div class="text-5xl">🛠️</div>
-							<div>
-								<div class="text-xs uppercase tracking-widest">Патент №129228</div>
-								<div class="font-semibold text-2xl">Универсальный лайтбокс</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-            </div>
-        </div>
-    </header>
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 bg-sky-500 rounded-xl flex items-center justify-center text-white font-bold">VS</div>
+<span class="title-font text-lg md:text-xl font-semibold">Виктор Суворов</span>
+</div>
 
-    <!-- ОБО МНЕ -->
-    <section id="about" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-12 gap-12">
-                <div class="md:col-span-5">
-                    <div class="sticky top-28">
-                        <span class="px-5 py-2 bg-sky-100 text-sky-700 rounded-3xl text-xs font-medium">ПРОФЕССИОНАЛЬНЫЙ ПРОФИЛЬ</span>
-                        <h2 class="title-font text-5xl md:text-6xl font-semibold tracking-tighter leading-none mt-6">Аналитик<br>со смыслом</h2>
-                    </div>
-                </div>
-                <div class="md:col-span-7 text-[17px] leading-relaxed text-zinc-600">
-                    <p class="mb-8">Технический руководитель с 25-летним опытом полного жизненного цикла продукта: от идеи и прототипирования → до серийного производства, эксплуатации и сервиса.</p>
-                    <p class="mb-8"><strong>Психологический профиль</strong><br>
-                    • Якоря карьеры: Служение (44 балла)<br>
-                    • Установки (Потёмкина): Доминанта — Альтруизм &amp; Свобода; Драйверы — Труд &amp; Результат<br>
-                    • Тип личности (ДДО): Человек-Знак (7 баллов) — работа с информацией, кодами, систематизацией и расчётами</p>
-                    <p class="font-medium">Главная ценность — направлять интеллектуальный ресурс на решение общественно значимых задач и приносить реальную пользу людям и бизнесу.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="hidden md:flex gap-6 text-sm">
+<a href="#about" class="nav-link">Обо мне</a>
+<a href="#experience" class="nav-link">Опыт</a>
+<a href="#skills" class="nav-link">Навыки</a>
+<a href="#portfolio" class="nav-link">Портфолио</a>
+</div>
 
-    <!-- ОПЫТ РАБОТЫ -->
-    <section id="experience" class="py-24 bg-zinc-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <span class="px-6 py-2 bg-white text-sky-600 font-semibold rounded-3xl text-sm">ОПЫТ РАБОТЫ • 25 ЛЕТ</span>
-            </div>
-            <div class="space-y-16">
-                <!-- Stopol Group -->
-                <div class="grid md:grid-cols-12 gap-8">
-                    <div class="md:col-span-4">
-                        <div class="bg-white rounded-3xl p-8">
-                            <div class="text-sky-600 font-medium text-lg">Stopol Group</div>
-                            <div class="text-sm text-zinc-500">2016 — 2026 • 9,5 лет</div>
-                            <div class="mt-4 font-semibold">Руководитель отдела предпродажной подготовки (автоэлектроника)</div>
-                        </div>
-                    </div>
-                    <div class="md:col-span-8 bg-white rounded-3xl p-8 text-sm text-zinc-600 space-y-3">
-                        <div>• Адаптация производства под требования Toyota, Nissan.</div>
-                        <div>• Управление отделом предпродажной подготовки по направлению автоэлектроника</div>
-                        <div>• Планирование и контроль загрузки производства.</div>
-                        <div>• Строительство и запуск подразделения в Московской области</div>
-                        <div>• Ввод системы учёта работ. Составление технической документации по тестированию.</div>
-                        <div>• Организация собственной ремонтной службы</div>
-                        <div>• Сертификация производственной площадки по ISO 9001</div>
-                    </div>
-                </div>
-                
-                <!-- АС-Сервис -->
-                <div class="grid md:grid-cols-12 gap-8">
-                    <div class="md:col-span-4">
-                        <div class="bg-white rounded-3xl p-8">
-                            <div class="text-sky-600 font-medium text-lg">ООО «АС-Сервис»</div>
-                            <div class="text-sm text-zinc-500">2001 — 2013 • 12 лет</div>
-                            <div class="mt-4 font-semibold">Технический директор / Ведущий технический специалист / Сервис-инженер</div>
-                        </div>
-                    </div>
-                    <div class="md:col-span-8 bg-white rounded-3xl p-8 text-sm text-zinc-600 space-y-3">
-                        <div>• Управление работой сервисного центра по направлению "Ремонт фото и видео техники"</div>
-                        <div>• Обучение новых сотрудников ремонту фотоаппаратуры</div>
-                        <div>• Оптимизация рабочих процессов сервисного центра, модернизация рабочих мест.</div>
-                        <div>• Полная модернизация склада продукции, оптимизация складских процессов</div>
-                        <div>• Разработка систем учёта и контроля выполняемых работ, алгоритмов для вендоров, системы расчёта сдельно-премиальной заработной платы</div>
-                        <div>• Постановка задач для программистов базы данных предприятия.</div>
-                        <div>• Разработка и модернизация технологического оборудования.</div>
-                        <div>• Сертификаты: Canon, Nikon, Sony, Panasonic, Kyocera, Epson, Lexmark, Samsung</div>
-                    </div>
-                </div>
-                
-                <!-- Юджикс-Сервис -->
-                <div class="grid md:grid-cols-12 gap-8">
-                    <div class="md:col-span-4">
-                        <div class="bg-white rounded-3xl p-8">
-                            <div class="text-sky-600 font-medium text-lg">ООО «Юджикс-Сервис» + ИП Терегулов</div>
-                            <div class="text-sm text-zinc-500">2013 — 2016 • 3 года</div>
-                            <div class="mt-4 font-semibold">Технический специалист</div>
-                        </div>
-                    </div>
-                    <div class="md:col-span-8 bg-white rounded-3xl p-8 text-sm text-zinc-600 space-y-3">
-                        <div>• Разработка системы учёта сервисного центра на базе 1С, составление технических заданий для программистов 1С.</div>
-                        <div>• Составление технической документации по ремонту оборудования (Service manual, Parts catalog)</div>
-                        <div>• Ремонт видеорегистраторов, 3D-принтеров, мобильных телефонов, переклейка стёкол iPhone, ремонт КМА</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<a href="https://t.me/V_Grafts" target="_blank"
+class="bg-sky-600 text-white px-4 py-2 rounded-xl text-sm">
+Telegram
+</a>
 
-    <!-- КЛЮЧЕВЫЕ КОМПЕТЕНЦИИ -->
-    <section id="skills" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="title-font text-5xl font-semibold text-center mb-16">Ключевые компетенции</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-zinc-50 rounded-3xl p-8">
-                    <div class="text-5xl mb-6">🔧</div>
-                    <h3 class="font-semibold text-2xl mb-6">Инженерия и производство</h3>
-                    <ul class="space-y-4 text-sm">
-                        <li>Разработка и модернизация технологического оборудования</li>
-                        <li>Создание производственной площадки полного цикла (проектирование, строительство, электроснабжение, вентиляция, СКУД, ISO 9001)</li>
-                        <li>3D-печать, фрезеровка, литьевые пластики, ПВХ, АБС, подготовка КД</li>
-                        <li>Промышленный и функциональный дизайн устройств</li>
-                        <li>Подготовка технической документации: инструкции, регламенты, ТЗ, сервисная документация</li>
-                    </ul>
-                </div>
-                <div class="bg-zinc-50 rounded-3xl p-8">
-                    <div class="text-5xl mb-6">📊</div>
-                    <h3 class="font-semibold text-2xl mb-6">Управление и сервис</h3>
-                    <ul class="space-y-4 text-sm">
-                        <li>Руководство техническими и сервисными подразделениями</li>
-                        <li>Сервис и ремонт фото/видео техники, оргтехники, 3D-принтеров</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+</div>
+</nav>
 
-    <!-- ПОРТФОЛИО -->
-    <section id="portfolio" class="py-24 bg-zinc-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <span class="text-xs font-medium tracking-widest text-sky-600">КЛИКНИТЕ НА КАРТОЧКУ ДЛЯ ПОДРОБНОСТЕЙ</span>
-                <h2 class="title-font text-5xl font-semibold tracking-tighter">Портфолио</h2>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8" id="portfolio-grid"></div>
-        </div>
-    </section>
+<!-- HERO -->
+<header class="hero-bg py-10 md:py-20">
+<div class="max-w-7xl mx-auto px-4 md:px-6">
 
-    <!-- УВЛЕЧЕНИЯ -->
-    <section id="hobbies" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="title-font text-5xl font-semibold">Увлечения (2025–2026)</h2>
-                <p class="max-w-2xl mx-auto text-zinc-600 mt-4">Моё увлечение визуальным творчеством началось более 45 лет назад с фотографии. Сегодня — видео, монтаж и локальный искусственный интеллект.</p>
-            </div>
-            
-            <div class="max-w-2xl mx-auto space-y-4">
-                <details class="bg-white border border-zinc-200 rounded-3xl p-6">
-                    <summary class="font-medium flex items-center justify-between">Фото- и видеосъёмка</summary>
-                    <div class="mt-4 text-zinc-600 text-sm">Оттачиваю навыки работы с камерой, светом и композицией — как в статике, так и в динамике. Экспериментирую с разными жанрами: от предметной съёмки до репортажа.</div>
-                </details>
-                
-                <details class="bg-white border border-zinc-200 rounded-3xl p-6">
-                    <summary class="font-medium flex items-center justify-between">Видеомонтаж в DaVinci Resolve</summary>
-                    <div class="mt-4 text-zinc-600 text-sm">Углублённо изучаю этот мощный инструмент: цветокоррекцию, грейдинг, работу со звуком и спецэффектами. Стремлюсь добиваться кинематографического качества в каждом проекте.</div>
-                </details>
-                
-                <details class="bg-white border border-zinc-200 rounded-3xl p-6">
-                    <summary class="font-medium flex items-center justify-between">Локальные AI‑решения и генеративные модели</summary>
-                    <div class="mt-4 text-zinc-600 text-sm">
-                        Увлекаюсь внедрением искусственного интеллекта в творческий процесс — без привязки к облачным сервисам. Практикуюсь в запуске и настройке локальных моделей для:<br><br>
-                        • генерации изображений и видео (Stable Diffusion Web UI, InvokeAI) в творческих проектах;<br>
-                        • автоматизации рабочих процессов: генерации отчётов, анализа данных, создания презентаций, обработки документации;<br>
-                        • работы с языковыми моделями (LM Studio, Ollama, Text Generation WebUI) для ускорения написания текстов, перевода, структурирования информации;<br>
-                        • создания RAG‑систем (Retrieval‑Augmented Generation) для быстрого доступа к корпоративным знаниям и автоматизации поиска информации.
-                    </div>
-                </details>
-                
-                <details class="bg-white border border-zinc-200 rounded-3xl p-6">
-                    <summary class="font-medium flex items-center justify-between">Автоматизация быта («умный дом»)</summary>
-                    <div class="mt-4 text-zinc-600 text-sm">Практически полностью автоматизировал собственную квартиру: освещение, климат, безопасность, бытовая автоматизация, голосовое управление.</div>
-                </details>
-            </div>
-            
-            <div class="flex justify-center gap-8 mt-16">
-                <a href="https://rutube.ru/channel/55417187/videos/" target="_blank" class="flex items-center gap-x-3 text-xl font-medium hover:text-sky-600">
-                    <i class="fab fa-youtube text-3xl"></i> Rutube канал
-                </a>
-                <a href="https://t.me/V_Grafts" target="_blank" class="flex items-center gap-x-3 text-xl font-medium hover:text-sky-600">
-                    <i class="fab fa-telegram-plane text-3xl"></i> @V_Grafts
-                </a>
-            </div>
-        </div>
-    </section>
+<div class="grid md:grid-cols-2 gap-8 items-center">
 
-    <!-- КОНТАКТЫ -->
-    <section id="contact" class="py-24 bg-zinc-900 text-white">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="title-font text-5xl font-semibold mb-10">Готов к сотрудничеству</h2>
-            <div class="max-w-md mx-auto space-y-6">
-                <a href="mailto:viktors@yandex.ru" class="block bg-white text-zinc-900 hover:bg-amber-300 py-8 rounded-3xl text-2xl font-medium transition-all">viktors@yandex.ru</a>
-                <a href="https://t.me/V_Grafts" target="_blank" class="block bg-sky-600 py-8 rounded-3xl text-2xl font-medium">Telegram @V_Grafts</a>
-            </div>
-            <div class="mt-16 text-xs text-zinc-400">Санкт-Петербург • Готов к редким командировкам • Не готов к переезду</div>
-        </div>
-    </section>
+<!-- TEXT -->
+<div>
 
-    <!-- FOOTER -->
-    <footer class="bg-white py-12 border-t">
-        <div class="max-w-7xl mx-auto px-6 text-center text-xs text-zinc-400">
-            © 2026 Виктор Суворов • Патент на полезную модель №129228<br>
-            Санкт-Петербург • Сайт создан на Tailwind + чистый HTML
-        </div>
-    </footer>
+<div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full text-xs mb-4">
+<span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
+Доступен для проектов
+</div>
 
-    <!-- MODAL -->
-    <div id="portfolio-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[9999]">
-        <div class="modal bg-white max-w-2xl w-full mx-4 rounded-3xl overflow-hidden">
-            <div class="px-8 py-6 border-b flex justify-between items-center">
-                <div id="modal-title" class="font-semibold text-2xl"></div>
-                <button onclick="closeModal()" class="text-4xl text-zinc-400 hover:text-black">×</button>
-            </div>
-            <div id="modal-content" class="p-8 prose text-zinc-600 max-h-[70vh] overflow-y-auto"></div>
-            <div class="p-8 border-t text-right">
-                <button onclick="closeModal()" class="px-8 py-3 bg-zinc-100 hover:bg-zinc-200 rounded-2xl font-medium">Закрыть</button>
-            </div>
-        </div>
-    </div>
+<h1 class="title-font text-3xl sm:text-4xl md:text-6xl leading-tight mb-3">
+Виктор<br>Суворов
+</h1>
 
-    <script>
-        // Мобильное меню
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+<p class="text-lg md:text-2xl text-zinc-600 mb-5">
+Аналитик со смыслом
+</p>
 
-        const projects = [
-            {
-                title: "1. Оборудование для сервиса",
-                image: "ae1.jpg",
-                long: `LightBox LBL-02 (патент №129228) + коллиматоры + ламинарный бокс<br><br>Полностью разработал и изготовил с нуля — от идеи и проектной документации до физического прототипа, написания кода для микроконтроллера и выпуска малой партии.<br>Ключевые характеристики: выбор цветовой температуры и яркости; встроенное автоматическое меню управления; функции самодиагностики и автокалибровки; аппаратная платформа: микроконтроллер ATMega128-16AI.<br>Результаты: получен патент на полезную модель № 129228; устройство прошло положительную оценку комиссий представителей компаний Sony и Nikon.<br><br>Коллиматоры 500 мм и 1000 мм<br>Разработал и изготовил коллиматоры для точной настройки автофокуса фототехники. Два типоразмера: 500 мм и 1000 мм; высокая точность юстировки оптических элементов; полная проектная документация разработана мной; изготовление: подбор материалов, сборка, тестирование.<br><br>Чистые боксы с HEPA‑фильтрами (ламинарные системы)<br>Создал систему чистых боксов для проведения прецизионных работ в беспылевой среде. Встроенная система фильтрации воздуха с HEPA‑фильтрами (класс H13 и выше); герметичная конструкция; продуманная эргономика; проектная документация, чертежи и спецификации разработаны мной.<br><br>Разработал и изготовил 50+ блоков тестирования для предпродажной проверки автомагнитол (зажигание, подсветка, «ЭРА‑ГЛОНАСС», кнопки руля). Сократил время тестирования на 40 %, повысил точность диагностики и снизил количество рекламаций за счёт стандартизации процесса.`
-            },
-            {
-                title: "2. Автоэлектроника",
-                image: "ae2.jpg",
-                long: `Блок климат‑контроля для Daewoo Nexia + блок вежливого света + контроллер разряда АКБ + светодиодные ПТФ 18 Вт<br><br>Блок климат‑контроля для Daewoo Nexia на базе микроконтроллера PIC16F887. Реализованы авто‑ и ручной режимы, 8 скоростей вентилятора, управление сервоприводом, задержки запуска. Устройство органично вписывается в штатный дизайн салона автомобиля.<br>Блок вежливого света на микроконтроллере PIC12F629 с программируемым таймером отключения — обеспечивает автоматическое выключение освещения через заданное время.<br>Контроллер разряда АКБ на микроконтроллере ATtiny85-20SU. Защищает аккумулятор от разряда при подключении дополнительных устройств (например, видеорегистратора), имеет таймер отключения.<br>Светодиодные противотуманные фары (ПТФ) на сборках Cree CXA2520 с рабочим напряжением светодиодов на 36В и бортовой сети 12 вольт. Обеспечивают яркое и равномерное освещение, рассчитаны на долговременную эксплуатацию.`
-            },
-            {
-                title: "3. Производственное оборудование",
-                image: "cnc.jpg",
-                long: `Модернизация литьевой машины (1990-е) + поддержка 3D-принтеров ROBOX + фрезерный станок 600×400 мм<br><br>Модернизация литьевой машины: перевод из ручного режима в полуавтоматический. Полностью переработал конструкцию и разработал систему управления для литьевой машины. В результате ручной процесс литья автоматизирован до полуавтоматического режима, что позволило повысить производительность, снизить влияние человеческого фактора, обеспечить стабильность параметров литья.<br><br>Участие в разработке и тестировании 3D‑принтеров Robox. Принимал участие в цикле разработки и тестирования 3D‑принтеров модели Robox: от прототипирования до финальной настройки и испытаний. В задачи входили проверка надёжности узлов и механизмов, отладка прошивки и калибровка, тестирование печати с разными материалами, сбор и анализ данных для улучшения конструкции.<br><br>Самостоятельная сборка фрезерного станка с ЧПУ. Спроектировал и собрал с нуля фрезерный станок с ЧПУ с рабочим полем 60×40 см. Предназначен для обработки листовых материалов: ПВХ, АБС‑пластик, фанера, а также мягкие металлы; конструкция на рельсовых направляющих и шарико‑винтовых парах (ШВП); шпиндель мощностью 500 Вт; полностью собственная разработка — от схемы и подбора компонентов до сборки и настройки.`
-            },
-            {
-                title: "4. Софт и системы учёта",
-                image: "soft1.JPG",
-                long: `Программа-каталогизатор АС-Сервис + системы учёта на 1С + комплексная система учёта<br><br>Разработал десктоп‑приложение для сервисного центра — единый интерфейс для запуска специализированных утилит по сериям устройств с функцией сетевого обновления. Решение позволило сократить время на поиск и запуск утилит на 70 %, исключить ошибки из‑за использования устаревших версий и стандартизировать рабочие процессы.<br><br>Постановка и координация задач для программистов по модернизации ИТ‑систем предприятия: оптимизация складских процессов (от приёмки до выдачи), внедрение систем учёта и контроля работ сервисного центра, разработка алгоритмов отчётности для вендоров, создание системы расчёта сдельно‑премиальной заработной платы. Результат: повышение прозрачности операций, сокращение временных затрат на учёт, автоматизация ключевых бизнес‑процессов.<br><br>Разработал и внедрил комплексную систему учёта для отдела предпродажной подготовки. Система охватывает все этапы производственного процесса и построена на принципе последовательного сканирования: сотрудник сканирует код с бейджика → серийный номер устройства → (при необходимости) номера комплектующих.<br>Ключевые функции: единый интерфейс, аудит действий, интеграция с видеонаблюдением, история операций, отчётность и аналитика, управление персоналом, автоматическая печать этикеток.<br>Результат: полная прозрачность производственных процессов, сокращение времени на оформление документации на 60 %, минимизация ошибок ввода данных, возможность быстрого аудита и расследования инцидентов через видеоархив.`
-            },
-            {
-                title: "5. Акустические системы Graft Audio",
-                image: "as.jpg",
-                long: `AF-02 Stage • AL-01 Maximo • AF-03 Cenya • AG-1 Klaaspall • AL-03 KIVI • AL-04 Array и др.<br><br>
-Graft audio AF-02 Stage<br>
-Тип: Полочная акустическая система. Акустическое оформление: Фазоинвертор. Корпус: Из композитных материалов, поглощающих вибрацию, с отделкой натуральным шпоном. Динамики: 165 мм мидбас и 1'' твитер. Особенности: Разделение на правую и левую (ВЧ-динамик смещен к внешнему краю), твитер установлен глубже для выравнивания временных задержек, внутренние ребра жесткости, оклейка акустическим войлоком. Характеристики: Чувствительность 90 дБ, импеданс 4 Ом, номинальная мощность 40 Вт, частотный диапазон 40-20000 Гц. Размеры: 36х26х20 см. Год: 2017.<br><br>
-Graft audio AL-01 Maximo<br>
-Акустическое оформление: Акустический лабиринт. Корпус: Из композитных материалов, поглощающих вибрацию. Динамики: 165 мм мидбас и 1'' твитер. Особенности: Разделение на правую и левую (ВЧ-динамик смещен к внешнему краю), внутренняя конструкция оклеена акустическим войлоком. Характеристики: Чувствительность 90.5 дБ, импеданс 4 Ом, номинальная мощность 60 Вт, частотный диапазон 32-20000 Гц. Год: 2018.<br><br>
-Graft audio AF-03 Cenya<br>
-Тип: Полочная акустическая система (изготовлена по заказу). Динамики: СЧ/НЧ SEAS Excel E0049-04S и ВЧ Wavecor TW030WA09-01. Акустическое оформление: Фазоинвертор. Корпус: Из композитных материалов, с отделкой виниловой плёнкой. Особенности: Дополнительные ребра жесткости, трубы фазоинвертора сложной формы, внутренняя конструкция полностью оклеена акустическим войлоком. Год: 2019.<br><br>
-Graft audio AG-1 Klaaspall<br>
-Тип: Активная акустическая система. Корпус: Сферические стеклянные корпуса. Динамики: 3'' широкополосные динамики. Усилитель: Цифровой усилитель мощности с питанием от USB (до 5 Ватт), собран в деревянном корпусе с регулятором громкости со светодиодной подсветкой. Год: 2019.<br><br>
-Graft audio AL-03 KIVI<br>
-Акустическое оформление: Акустический (четвертьволновый) лабиринт. Корпус: Из 21 мм берёзовой фанеры, обклеенной HPL под искусственный камень. Динамики: 165 мм мидбас Visaton W 170 S/4 и 104 мм твитер Vifa XT25TG30-04. Особенности: Внутренняя конструкция оклеена акустическим войлоком. Характеристики: Чувствительность 86.5 дБ, импеданс 4 Ом, номинальная мощность 60 Вт, частотный диапазон 32-20000 Гц. Размеры: 105х20х30 см. Год: 2020.<br><br>
-Graft audio AL-04 Array<br>
-Акустическое оформление: Акустический (четвертьволновый) лабиринт. Корпус: Из 21 мм берёзовой фанеры, обклеенной HPL по бокам, на фронтальной стороне оставлена структура склееной фанеры покрытая прозрачным лаком. Динамики: 165 мм мидбас Visaton W 170 S/4 и 104 мм твитер Vifa XT25TG30-04. Особенности: Корпус выполнен по технологии «сэндвич-массив»: внутренний объем лабиринта формируется путем фрезерования пустот в отдельных листах 21-мм фанеры, которые затем склеиваются между собой. В результате получается абсолютно монолитная конструкция, где канал акустического лабиринта интегрирован непосредственно в массив корпуса, что исключает паразитные вибрации и придает системе исключительную жесткость. Внутренние каналы лабиринта дополнительно оклеены акустическим войлоком для демпфирования высокочастотных резонансов. Характеристики: Чувствительность 86.5 дБ, импеданс 4 Ом, номинальная мощность 60 Вт, частотный диапазон 32-20000 Гц. Размеры: 105х20х30 см. Год: 2021.`
-            },
-            {
-                title: "6. Фотобокс",
-                image: "FB.jpg",
-                long: `Компактный бокс для предметной съёмки и маникюра с равномерной профессиональной подсветкой.<br><br>Разработал линейку компактных фотобоксов с равномерной профессиональной подсветкой от идеи и проекта до серийного производства, (разные размеры и мощность). Реализовано более 200 экземпляров, есть модели разборной конструкции.`
-            }
-        ];
+<p class="text-sm md:text-base text-zinc-600 mb-6">
+Технический руководитель • 25+ лет опыта<br>
+Патент №129228 • Инженерия • Автоматизация
+</p>
 
-        function renderPortfolio() {
-            const grid = document.getElementById('portfolio-grid');
-            grid.innerHTML = '';
-            projects.forEach((p) => {
-                const card = document.createElement('div');
-                card.className = 'portfolio-card bg-white rounded-3xl overflow-hidden cursor-pointer shadow';
-                card.innerHTML = `
-                    <img src="${p.image}" class="w-full h-56 object-cover">
-                    <div class="p-8">
-                        <h3 class="font-semibold text-xl">${p.title}</h3>
-                        <div class="mt-6 text-sky-600 text-xs font-medium flex items-center gap-2">Подробнее →</div>
-                    </div>
-                `;
-                card.onclick = () => showModal(p);
-                grid.appendChild(card);
-            });
-        }
+<div class="flex flex-col sm:flex-row gap-3">
 
-        function showModal(project) {
-            document.getElementById('modal-title').innerHTML = project.title;
-            document.getElementById('modal-content').innerHTML = project.long;
-            document.getElementById('portfolio-modal').classList.remove('hidden');
-            document.getElementById('portfolio-modal').classList.add('flex');
-        }
+<a href="#portfolio"
+class="bg-sky-600 text-white px-5 py-3 rounded-xl text-center">
+Портфолио →
+</a>
 
-        function closeModal() {
-            const modal = document.getElementById('portfolio-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
+<a href="https://t.me/V_Grafts"
+class="border px-5 py-3 rounded-xl text-center">
+Написать
+</a>
 
-        window.onload = () => {
-            renderPortfolio();
-            document.querySelectorAll('a[href^="#"]').forEach(a => {
-                a.addEventListener('click', e => {
-                    e.preventDefault();
-                    document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-            document.getElementById('portfolio-modal').addEventListener('click', e => {
-                if (e.target.id === 'portfolio-modal') closeModal();
-            });
-        };
-    </script>
+</div>
+
+</div>
+
+<!-- IMAGE -->
+<div>
+<img src="VB.JPG"
+class="w-full max-w-sm mx-auto rounded-2xl shadow-lg">
+</div>
+
+</div>
+
+</div>
+</header>
+
+<!-- ABOUT -->
+<section id="about" class="py-12 md:py-20 bg-white">
+<div class="max-w-5xl mx-auto px-4 text-zinc-600 text-sm md:text-base leading-relaxed">
+
+<h2 class="title-font text-2xl md:text-4xl mb-6 text-black">
+Обо мне
+</h2>
+
+<p class="mb-4">
+Технический руководитель с 25-летним опытом полного цикла:
+от разработки до производства и сервиса.
+</p>
+
+<p>
+Фокус: инженерия, автоматизация, разработка оборудования,
+систем учета и производственных процессов.
+</p>
+
+</div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="py-12 md:py-20 bg-zinc-100">
+<div class="max-w-7xl mx-auto px-4">
+
+<h2 class="title-font text-2xl md:text-4xl text-center mb-10">
+Портфолио
+</h2>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+<div class="portfolio-card bg-white p-6 rounded-2xl shadow">
+<h3 class="font-semibold">Оборудование</h3>
+</div>
+
+<div class="portfolio-card bg-white p-6 rounded-2xl shadow">
+<h3 class="font-semibold">Автоэлектроника</h3>
+</div>
+
+<div class="portfolio-card bg-white p-6 rounded-2xl shadow">
+<h3 class="font-semibold">Акустика</h3>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="py-12 md:py-20 bg-zinc-900 text-white text-center">
+
+<h2 class="title-font text-2xl md:text-4xl mb-6">
+Контакты
+</h2>
+
+<a href="mailto:viktors@yandex.ru"
+class="block mb-4 text-lg">
+viktors@yandex.ru
+</a>
+
+<a href="https://t.me/V_Grafts"
+class="bg-sky-600 px-6 py-3 rounded-xl inline-block">
+Telegram
+</a>
+
+</section>
+
 </body>
 </html>
